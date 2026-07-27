@@ -140,6 +140,34 @@
 .blog-author a:hover{text-decoration:underline}
 .wa-float{position:fixed;bottom:24px;right:24px;z-index:9999;background:#25D366;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.28);text-decoration:none;transition:transform .2s,box-shadow .2s}
 .wa-float:hover{transform:scale(1.1);box-shadow:0 8px 24px rgba(0,0,0,.36)}
+
+.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:stretch}
+.contact-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:34px;box-shadow:0 2px 10px rgba(14,23,38,.04)}
+.contact-panel h2{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:800;letter-spacing:-.02em;margin-bottom:10px;text-align:left}
+.contact-panel>p{color:var(--ink-soft);margin-bottom:24px;text-align:left}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.85rem;font-weight:700;color:var(--ink);margin-bottom:6px}
+.field label span{color:#dc2626}
+.field input,.field select,.field textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-family:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);transition:.2s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.field textarea{resize:vertical;min-height:96px}
+.hp{position:absolute!important;left:-9999px!important;opacity:0!important;height:0!important;width:0!important}
+.form-submit{width:100%;padding:14px;font-size:1rem;margin-top:6px}
+.form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.form-note{font-size:.8rem;color:var(--ink-soft);text-align:center;margin-top:12px}
+.form-msg{display:none;padding:14px 16px;border-radius:10px;font-size:.9rem;font-weight:600;margin-top:16px;line-height:1.5}
+.form-msg.ok{display:block;background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46}
+.form-msg.err{display:block;background:#fef2f2;border:1px solid #fecaca;color:#991b1b}
+.map-panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 2px 10px rgba(14,23,38,.04);display:flex;flex-direction:column}
+.map-panel iframe{width:100%;flex:1;min-height:300px;border:0;display:block}
+.map-info{padding:24px}
+.map-info h3{font-size:1.05rem;margin-bottom:10px}
+.map-info address{font-style:normal;color:var(--ink-soft);font-size:.92rem;line-height:1.65;margin-bottom:16px}
+.map-links{display:flex;flex-direction:column;gap:9px;font-size:.92rem;font-weight:600}
+.map-links a{color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+.map-links a:hover{text-decoration:underline}
+.map-dir{margin-top:14px}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -399,18 +427,83 @@ Published by <strong itemprop="name">Jatin Verma</strong> &mdash; you can reach 
 </section>
 
 <section class="contact" id="contact">
-  <div class="wrap">
-    <div class="card">
-      <h2>Let's discuss your next project.</h2>
-      <p>Tell us about your idea and we'll get back to you with a free quote — no strings attached.</p>
-      <div class="cta">
-        <a class="btn tel" href="tel:+917259633629">📞 +91 72596 33629</a>
-        <a class="btn btn-primary" href="mailto:Deepak@alpify.in?subject=Project%20Inquiry">✉️ Deepak@alpify.in</a>
-        <a class="btn btn-ghost" href="mailto:Jatin@alpify.in?subject=Project%20Inquiry">✉️ Jatin@alpify.in</a>
-      </div>
-    </div>
-  </div>
+<div class="wrap">
+<div class="sec-head">
+<h2>Let&rsquo;s discuss your next project</h2>
+<p>Tell us about your idea and we&rsquo;ll get back to you with a free quote &mdash; no strings attached.</p>
+</div>
+<div class="contact-grid">
+
+<div class="contact-panel">
+<h2>Send us a message</h2>
+<p>Fill in the form and we&rsquo;ll respond within one business day.</p>
+<form id="alpify-form" novalidate>
+<div class="field">
+<label for="cf-name">Name <span>*</span></label>
+<input type="text" id="cf-name" name="name" required autocomplete="name" placeholder="Your full name">
+</div>
+<div class="field">
+<label for="cf-email">Email address <span>*</span></label>
+<input type="email" id="cf-email" name="email" required autocomplete="email" placeholder="you@company.com">
+</div>
+<div class="field">
+<label for="cf-location">Location</label>
+<input type="text" id="cf-location" name="location" autocomplete="address-level2" placeholder="City, State">
+</div>
+<div class="field">
+<label for="cf-purpose">Purpose of contacting <span>*</span></label>
+<select id="cf-purpose" name="purpose" required>
+<option value="">Select a purpose</option>
+<option>AI Solutions &amp; Automation</option>
+<option>Digital Marketing &amp; Performance Ads</option>
+<option>Search Engine Optimization</option>
+<option>Website Development</option>
+<option>Mobile App Development</option>
+<option>E-commerce Growth</option>
+<option>Branding &amp; Creative Design</option>
+<option>Analytics &amp; Data</option>
+<option>Cloud &amp; Infrastructure</option>
+<option>Business Consulting</option>
+<option>Careers</option>
+<option>Other</option>
+</select>
+</div>
+<div class="field">
+<label for="cf-message">Tell us more</label>
+<textarea id="cf-message" name="message" placeholder="A few lines about your project, timeline or budget"></textarea>
+</div>
+<div class="hp"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<button type="submit" class="btn btn-primary form-submit" id="cf-submit">Send Enquiry</button>
+<p class="form-note">We reply within one business day. Your details are never shared.</p>
+<div class="form-msg" id="cf-msg" role="status" aria-live="polite"></div>
+</form>
+</div>
+
+<div class="map-panel">
+<iframe src="https://www.google.com/maps?q=Oxford+Towers,+139,+HAL+Old+Airport+Rd,+Kodihalli,+Bengaluru,+Karnataka+560008&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Alpify Technologies LLP office location on Google Maps" allowfullscreen></iframe>
+<div class="map-info">
+<h3>Visit our office</h3>
+<address>
+Alpify Technologies LLP<br>
+Unit 101, Oxford Towers, 139<br>
+HAL Old Airport Road, Kodihalli<br>
+H.A.L. II Stage, Bengaluru<br>
+Karnataka 560008, India
+</address>
+<div class="map-links">
+<a href="tel:+917259633629">&#128222; +91 72596 33629</a>
+<a href="mailto:Deepak@alpify.in?subject=Project%20Inquiry">&#9993;&#65039; Deepak@alpify.in</a>
+<a href="mailto:Jatin@alpify.in?subject=Project%20Inquiry">&#9993;&#65039; Jatin@alpify.in</a>
+<a href="https://wa.me/917259633629" target="_blank" rel="noopener noreferrer">&#128172; Chat on WhatsApp</a>
+</div>
+<div class="map-dir"><a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=Oxford+Towers+139+HAL+Old+Airport+Road+Kodihalli+Bengaluru+560008" target="_blank" rel="noopener noreferrer">Get Directions &rarr;</a></div>
+</div>
+</div>
+
+</div>
+</div>
 </section>
+
 
 <footer>
   <div class="wrap">
@@ -450,5 +543,31 @@ Published by <strong itemprop="name">Jatin Verma</strong> &mdash; you can reach 
 <a class="wa-float" href="https://wa.me/917259633629" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
+<script>
+(function(){
+  var ENDPOINT = "";
+  var f = document.getElementById("alpify-form");
+  if(!f) return;
+  var btn = document.getElementById("cf-submit");
+  var msg = document.getElementById("cf-msg");
+  function show(t,x){ msg.className = "form-msg "+t; msg.innerHTML = x; }
+  f.addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var nm=f.name.value.trim(), em=f.email.value.trim(), pu=f.purpose.value;
+    if(!nm||!em||!pu){ show("err","Please fill in your name, email and purpose of contacting."); return; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){ show("err","Please enter a valid email address."); return; }
+    if(!ENDPOINT){ show("err","The form is not connected yet. Please email <a href=\"mailto:Deepak@alpify.in\" style=\"color:inherit;text-decoration:underline\">Deepak@alpify.in</a> or call <a href=\"tel:+917259633629\" style=\"color:inherit;text-decoration:underline\">+91 72596 33629</a> in the meantime."); return; }
+    btn.disabled=true; btn.textContent="Sending...";
+    fetch(ENDPOINT,{method:"POST",body:new URLSearchParams(new FormData(f))})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(d&&d.ok){ show("ok","Thank you, "+nm.split(" ")[0]+". Your enquiry has reached us &mdash; we will get back to you within one business day."); f.reset(); }
+        else { show("err",(d&&d.error)?d.error:"Something went wrong. Please email Deepak@alpify.in instead."); }
+      })
+      .catch(function(){ show("err","Could not send right now. Please email <a href=\"mailto:Deepak@alpify.in\" style=\"color:inherit;text-decoration:underline\">Deepak@alpify.in</a> or call +91 72596 33629."); })
+      .finally(function(){ btn.disabled=false; btn.textContent="Send Enquiry"; });
+  });
+})();
+</script>
 </body>
 </html>
